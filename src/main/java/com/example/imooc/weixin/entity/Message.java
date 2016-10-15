@@ -7,9 +7,9 @@ package com.example.imooc.weixin.entity;
 public class Message {
 
 	private String 	id; 		//主键
-	private String 	command;
-	private String 	description;
-	private String 	content;
+	private String 	command;    //指令
+	private String 	description;//描述
+	private String 	content;    //内容
 	
 	public String getId() {
 		return id;

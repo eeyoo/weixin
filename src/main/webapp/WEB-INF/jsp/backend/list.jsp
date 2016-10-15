@@ -1,5 +1,8 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -9,6 +12,7 @@
 		<link href="css/all.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body style="background: #e1e9eb;">
+	<p>${hello}</p>
 		<form action="" id="mainForm" method="post">
 			<div class="right">
 				<div class="current">当前位置：<a href="javascript:void(0)" style="color:#6E6E6E;">内容管理</a> &gt; 内容列表</div>
@@ -35,50 +39,25 @@
 								<tr>
 								    <th><input type="checkbox" id="all" onclick="#"/></th>
 								    <th>序号</th>
-								    <th>演示字段1</th>
-								    <th>演示字段2</th>
+								    <th>指令</th>
+								    <th>描述</th>
+								    <th>内容</th>
 								    <th>操作</th>
 								</tr>
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>1</td>
-									<td>演示值1</td>
-									<td>演示值2</td>
-									<td>
-										<a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-										<a href="#">删除</a>
-									</td>
-								</tr>
-								<tr style="background-color:#ECF6EE;">
-									<td><input type="checkbox" /></td>
-									<td>2</td>
-									<td>演示值1</td>
-									<td>演示值2</td>
-									<td>
-										<a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-										<a href="#">删除</a>
-									</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>3</td>
-									<td>演示值1</td>
-									<td>演示值2</td>
-									<td>
-										<a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-										<a href="#">删除</a>
-									</td>
-								</tr>
-								<tr style="background-color:#ECF6EE;">
-									<td><input type="checkbox" /></td>
-									<td>4</td>
-									<td>演示值1</td>
-									<td>演示值2</td>
-									<td>
-										<a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-										<a href="#">删除</a>
-									</td>
-								</tr>
+								<c:forEach items="${list}" var="msg" varStatus="status">
+								
+									<tr <c:if test="${status.index % 2 != 0}">style="background-color:#ECF6EE;"</c:if>>
+										<td><input type="checkbox" /></td>
+										<td>${status.index + 1 })</td>
+										<td>${msg.command}</td>
+										<td>${msg.description}</td>
+										<td>${msg.content }</td>
+										<td>
+											<a href="#">修改</a>&nbsp;&nbsp;&nbsp;
+											<a href="#">删除</a>
+										</td>
+									</tr>
+								</c:forEach>								
 							</tbody>
 						</table>
 						<div class='page fix'>

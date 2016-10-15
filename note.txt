@@ -1,0 +1,3 @@
+EL表达式失效问题
+JSP页面默认关闭EL表达式
+<%@ page isELIgnored="false" %> 
